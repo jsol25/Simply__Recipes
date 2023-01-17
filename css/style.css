@@ -1,0 +1,242 @@
+/* || RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  font: inherit;
+}
+
+.display__none {
+  display: none;
+}
+
+/* || VARIABLES */
+
+:root {
+  /* FONT*/
+  --FF: Arial, Helvetica, sans-serif;
+  --FS-SM:.8rem;
+  --FS: 1.4rem;
+  --FS-L: 2rem;
+  --FS-XL: 2.5rem;
+  
+  /* COLORS*/
+  --HTML-BACKGROUND: rgb(62, 88, 231);
+  --BODY-BACKGROUND: WHITE;
+  --SECTION-BACKGROUND: rgb(219, 224, 252);
+  --TEXT-WHITE: ALICEBLUE;
+
+  /* GENERAL*/
+  --PADDING: 1rem;
+  --PADDING-HALF: .5rem;
+  --MARGIN: 1rem;
+  --SHADOWS: 2px 2px 2px black;
+}
+
+/* ||| GENERAL STYLES */
+html{
+  background-color: var(--HTML-BACKGROUND);
+  font-family: var(--FF);
+  font-size: var(--FS);
+}
+
+body {
+  background-color: aliceblue;
+  margin: auto;
+  max-width: 992px;
+  min-height: 100%;
+}
+
+.header { 
+  grid-area: header;
+  background-color: rgb(180, 180, 216);
+  display: flex;
+  flex: row nowrap;
+}
+
+.header__list {
+  display: flex;
+  flex: row;
+  list-style-type: none;
+}
+
+.header__list-item {
+  margin: var(--PADDING-HALF);
+}
+
+.main__title {
+  text-align: center;
+  background-image: url(../img/main\ title.jpeg);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title__container {
+  background-color: hsla(0, 0%, 0%, .35);
+}
+
+.title__sub { 
+  padding-top: var(--PADDING);
+  padding-bottom: var(--PADDING);
+  color: aliceblue;
+  text-shadow: 2px 2px 5px black;
+}
+
+.main__sidebar {
+  grid-area: side;
+  background-color: rgb(180, 180, 216);
+}
+
+.sidebar__list {
+  list-style-type: none;
+  text-align: center;
+  margin: var(--MARGIN);
+  font-size: var(--FS);
+  font-weight: bold;
+  position: sticky;
+  top: var(--MARGIN);
+}
+
+.sidebar__list-header, .sidebar__list-item {
+  margin-bottom: var(--MARGIN);
+}
+
+a {
+  text-decoration: none;
+}
+
+.recipes {
+  margin-right: var(--MARGIN);
+  margin-top: var(--MARGIN);
+}
+
+
+.recipes__title {
+  grid-area: title;
+  text-align: center;
+  background-color: rgb(180, 180, 216);
+}
+
+.footer {
+  grid-area: footer;
+  background-color: rgb(180, 180, 216);
+  text-align: center;
+
+}
+
+.footer__p{
+  padding: var(--PADDING-HALF);
+}
+
+/*|| ABOUT PAGE */
+
+.about__article {
+  padding: var(--PADDING);
+}
+.main__article {
+  padding-top: var(--PADDING);
+  padding-bottom: var(--PADDING);
+}
+
+/*|||MEDIA QUIRES */
+
+/* small */
+@media screen and (min-width:320px) {
+  .body{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer"
+    ;
+  }
+  .header__list-container, .main__sidebar {
+    display: none;
+  } 
+  .header {
+    display: flex
+  }
+  .header__logo-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--PADDING-HALF);
+  }
+  .about__doc .main__title {
+    display: none;
+  }
+}
+
+/* medium */
+@media screen and (min-width:768px) {
+  .recipes{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    grid-template-areas: 
+    "title  title"
+    "card   card"
+  }
+  .main__type {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .main__card-type {
+    width: 45%;
+    height: auto
+  }
+  .contact__fieldset {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    grid-template-areas: 
+    "fName lName"
+    "email email"
+    "phone phone"
+    "message message"
+    ;
+  }
+}
+
+/* large */
+@media screen and (min-width:992px) {
+  .header__list-container, .main__sidebar {
+    display: block;
+  } 
+  .header__logo-container {
+    margin-left: 0;
+  }
+  .recipes{
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr 2fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+    grid-template-areas: 
+    "side title  title  title"
+    "side card   card   card"
+    "side card   card   card"
+    "side card   card   card"
+  }
+  .main__type {
+    padding: var(--PADDING);
+  }
+  .card-type__img {
+    max-width: 440px;
+    max-height: 440px;
+  }
+}
